@@ -6,10 +6,11 @@
 	<stdlib.h>
 	<conio.h>
 
-1580927001 f:\programming-files\hello-world\playground\info-system\include\controller.h
+1580927835 f:\programming-files\hello-world\playground\info-system\include\controller.h
 	"Model.h"
 
-1580925573 f:\programming-files\hello-world\playground\info-system\include\model.h
+1580927835 f:\programming-files\hello-world\playground\info-system\include\model.h
+	"Config.h"
 
 1580926626 source:f:\programming-files\hello-world\playground\info-system\src\enrollment.cpp
 	<iostream>
@@ -24,7 +25,7 @@
 1580923219 source:f:\programming-files\hello-world\playground\info-system\src\model.cpp
 	"Model.h"
 
-1580927001 source:f:\programming-files\hello-world\playground\info-system\main.cpp
+1580927474 source:f:\programming-files\hello-world\playground\info-system\main.cpp
 	<iostream>
 	"Enrollment.h"
 	"Controller.h"
@@ -37,4 +38,6 @@
 	<conio.h>
 
 1580922889 f:\programming-files\hello-world\playground\info-system\include\database.h
+
+1580927795 f:\programming-files\hello-world\playground\info-system\include\config.h
 

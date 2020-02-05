@@ -7,7 +7,7 @@ using namespace std;
 
 int main()
 {
-
+    retrieveFileRecord();
     main_menu();
     return 0;
 }

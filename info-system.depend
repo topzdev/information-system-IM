@@ -1,0 +1,40 @@
+# depslib dependency file v1.0
+1580926998 source:f:\programming-files\hello-world\playground\info-system\src\controller.cpp
+	"Controller.h"
+	"Model.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
+1580927001 f:\programming-files\hello-world\playground\info-system\include\controller.h
+	"Model.h"
+
+1580925573 f:\programming-files\hello-world\playground\info-system\include\model.h
+
+1580926626 source:f:\programming-files\hello-world\playground\info-system\src\enrollment.cpp
+	<iostream>
+	<conio.h>
+	"Enrollment.h"
+	"Model.h"
+	"Controller.h"
+	"string.h"
+
+1580921029 f:\programming-files\hello-world\playground\info-system\include\enrollment.h
+
+1580923219 source:f:\programming-files\hello-world\playground\info-system\src\model.cpp
+	"Model.h"
+
+1580927001 source:f:\programming-files\hello-world\playground\info-system\main.cpp
+	<iostream>
+	"Enrollment.h"
+	"Controller.h"
+
+1580922853 source:f:\programming-files\hello-world\playground\info-system\src\database.cpp
+	"Database.h"
+	"Controller.h"
+	<stdio.h>
+	<stdlib.h>
+	<conio.h>
+
+1580922889 f:\programming-files\hello-world\playground\info-system\include\database.h
+

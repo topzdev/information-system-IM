@@ -1,5 +1,6 @@
 #include <iostream>
 #include <windows.h>
+#include <stdio.h>
 
 // Context
 #include "Enlistment.h"
@@ -38,8 +39,8 @@ void enlist_menu()
         break;
 
     case 3:
-        break;
         printCOR();
+        break;
 
     case 4:
         break;
@@ -129,24 +130,37 @@ void insertEnlist(ENLIST student, SUBJECT *input)
 
 void printCOR()
 {
-    int search, studentNo, recordIndex;
+    int search, studentNo, indx;
 
     cout << "Enter student Student no: ";
     cin >> studentNo;
 
     // if the student not found this function will not execute
-    recordIndex = locateStudent(studentNo);
-    if (recordIndex == -1)
+    indx = locateStudent(studentNo);
+    if (indx == -1)
     {
         cout << "Student not found try again later" << endl;
         pressAnyKey();
         enlist_menu();
         return;
     }
+    else
+    {
 
-    cout << "The student number is: TUPM-0" << enlist[recordIndex].studentNumber;
-    cout << "--------------------------------------------------------" << endl;
-    cout << "Last Name: " << record[recordIndex].firstName << "" << endl;
+        printf("\n\n\t\t\tCERTIFICATE OF REGISTRATION\n\n");
+        printf("\tStudent ID: TUPM-0%d\tSURNAME: %s  FIRST NAME: %s", enlist[indx].studentNumber, record[indx].lastName, record[indx].firstName);
+        printf("\n\tADDRESS: %s   Contact No.: %s", record[indx].address, record[indx].tel);
+        printf("\n\n\tSUBJECT CODE\tSUBJECT TITLE\tTIME\tVENUE\n");
+
+        for (int i = 0; i <= enlist[indx].subCount; i++)
+        {
+            printf("\t%s\t\t%s\t\t%s\t%s\n", enlist[indx].subject[i].subjectCode, enlist[indx].subject[i].subjectDescription, enlist[indx].subject[i].time, enlist[indx].subject[i].venue);
+        }
+
+        printf("\n\n\t ENROLLED ");
+        printf("\n\t ______________________");
+        printf("\n\n\t   Student's Signature");
+    }
 }
 
 void displaySubjects()
@@ -155,7 +169,7 @@ void displaySubjects()
     cout << "Subject Code | Venue | Time | Subject Description" << endl;
     for (i = 1; i <= totalEnlist; i++)
     {
-        cout << enlist[i].studentNumber << " " << enlist[i].subCount << endl;
+        cout << "STUDENT ID: " << enlist[i].studentNumber << "  NUMBER OF SUBJECTS: " << enlist[i].subCount + 1 << endl;
 
         for (e = 0; e <= enlist[i].subCount; e++)
         {

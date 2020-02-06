@@ -12,24 +12,52 @@ int enroll_menu()
 {
     int choosen;
     system("cls");
-    cout << "[1] Add Student Record\n";
-    cout << "[2] Search Student Record\n";
-    cout << "[3] Show All Student Record\n";
-    cout << "Enter your choosen number: ";
+    cout << "\xDB";
+    cout << "\t\t\t\t  =================================================\n";
+    cout << "\t\t\t\t  ||  \t\t                \t\t ||\n";
+    cout << "\t\t\t\t  ||  \t\t  ENROLLMENT FORM \t\t ||\n";
+    cout << "\t\t\t\t  ||  \t\t                \t\t ||\n";
+    cout << "\t\t\t\t  =================================================\n";
+    cout << "\n\n\n\t\t\t\t  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+    cout << "\t\t\t\t\t\t[1] Add Student Record\n";
+    cout << "\t\t\t\t  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+    cout << "\t\t\t\t\t\t[2] Search Student Record\n";
+    cout << "\t\t\t\t  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+    cout << "\t\t\t\t\t\t[3] Show All Student Record\n";
+    cout << "\t\t\t\t  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+    cout << "\t\t\t\t\t\tEnter your choosen number: ";
     cin >> choosen;
 
     switch (choosen)
     {
 
     case 1:
+        system("cls");
+        cout << "\t\t\t\t    =================================================\n";
+        cout << "\t\t\t\t    ||  \t\t              \t\t   ||\n";
+        cout << "\t\t\t\t    ||  ENROLLMENT FORM (PLEASE FILL UP THE FORM)  ||\n";
+        cout << "\t\t\t\t    ||  \t\t              \t\t   ||\n";
+        cout << "\t\t\t\t    =================================================\n";
         addRecordPrompt();
         break;
 
     case 2:
+        system("cls");
+        cout << "\t\t\t\t    =================================================\n";
+        cout << "\t\t\t\t    ||  \t\t              \t\t   ||\n";
+        cout << "\t\t\t\t    ||  \t  SEARCH A STUDENT RECORD \t   ||\n";
+        cout << "\t\t\t\t    ||  \t\t              \t\t   ||\n";
+        cout << "\t\t\t\t    =================================================\n";
         findStudent();
         break;
 
     case 3:
+        system("cls");
+        cout << "\t\t\t\t    =================================================\n";
+        cout << "\t\t\t\t    ||  \t\t              \t\t   ||\n";
+        cout << "\t\t\t\t    ||  \t    LIST OF STUDENTS \t\t   ||\n";
+        cout << "\t\t\t\t    ||  \t\t              \t\t   ||\n";
+        cout << "\t\t\t\t    =================================================\n";
         showAllRecord();
         break;
     }
@@ -41,23 +69,25 @@ int addRecordPrompt()
 {
     totalRecord++;
     STUDENT input;
-    cout << "ADD STUDENT RECORD\n";
-    cout << "===================================\n";
-    cout << "STUDENT ID:" << totalRecord << "\n";
+    cout << "\n\t\t\t\t    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+    cout << "\t\t\t\t\t\t ADD STUDENT INFORMATION\n";
+    cout << "\t\t\t\t    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+    cout << "\t\t\t\t\t\t    YOUR STUDENT ID:" << totalRecord << "\n";
+    cout << "\t\t\t\t    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n";
 
-    cout << "Enter your First Name: ";
+    cout << "\t\t\t\t\tEnter your First Name: ";
     cin >> input.firstName;
 
-    cout << "Enter your Last Name: ";
+    cout << "\n\t\t\t\t\tEnter your Last Name: ";
     cin >> input.lastName;
 
-    cout << "Enter your address: ";
+    cout << "\n\t\t\t\t\tEnter your address: ";
     cin >> input.address;
 
-    cout << "Enter your Tel Number: ";
+    cout << "\n\t\t\t\t\tEnter your Tel Number: ";
     cin >> input.tel;
 
-    cout << "Enter your Course: ";
+    cout << "\n\t\t\t\t\tEnter your Course: ";
     cin >> input.course;
 
     int i = totalRecord;
@@ -70,7 +100,8 @@ int addRecordPrompt()
     strcpy(record[i].course, input.course);
 
     saveFileRecord();
-    cout << " \nStudent Record Successfully Added\n";
+    cout << "\n\t\t\t\t    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+    cout << "\n\t\t\t\t\t    Student Record Successfully Added\n";
     getch();
     enroll_menu();
 
@@ -80,21 +111,25 @@ int addRecordPrompt()
 int findStudent()
 {
     int i = 1, id, found = 0;
-    cout << "FIND STUDENT RECORD\n";
-    cout << "=================================\n";
+    cout << "\n\t\t\t\t    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+    cout << "\t\t\t\t\t\t   FIND STUDENT RECORD\n";
+    cout << "\t\t\t\t    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
 
-    cout << "Enter student id: ";
+    cout << "\n\t\t\t\t\t\t    Enter student id: ";
     cin>>id;
 
     while (i <= totalRecord)
     {
         if (i == id)
         {
-            cout << "Student ID: " << record[i].id << "\n";
-            cout << "Full Name:" << record[i].firstName << " " << record[i].lastName << "\n";
-            cout << "Address:" << record[i].address << "\n";
-            cout << "Telephone Number:" << record[i].tel << "\n";
-            cout << "Course:" << record[i].course << "\n";
+            cout << "\n\t\t\t\t    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+            cout << "\t\t\t\t\t\t      STUDENT RECORD\n";
+            cout << "\t\t\t\t    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+            cout << "\n\t\t\t\t\t\t   Student ID: " << record[i].id << "\n";
+            cout << "\n\t\t\t\t\t\t   Full Name:" << record[i].firstName << " " << record[i].lastName << "\n";
+            cout << "\n\t\t\t\t\t\t   Address:" << record[i].address << "\n";
+            cout << "\n\t\t\t\t\t\t   Telephone Number:" << record[i].tel << "\n";
+            cout << "\n\t\t\t\t\t\t   Course:" << record[i].course << "\n";
             found++;
         }
         i++;
@@ -102,7 +137,10 @@ int findStudent()
 
     if (found == 0)
     {
-        cout << "\nStudent not found...\n";
+        cout << "\n\t\t\t\t    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+        cout << "\t\t\t\t\t\t      STUDENT RECORD\n";
+        cout << "\t\t\t\t    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+        cout << "\n\n\t\t\t\t\t\t    Student not found...\n";
     }
 
     getch();
@@ -113,16 +151,21 @@ int findStudent()
 int showAllRecord()
 {
     int i = 1;
+    cout << "\n\t\t\t\t    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+    cout << "\t\t\t\t\t\t SHOWING STUDENTS DATA\n";
+    cout << "\t\t\t\t    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+    cout << "\n\t\t\t\tID NO. \t NAME \t\t\tADDRESS  CONTACT NO. \t COURSE\n";
 
-    cout << "Showing student data\n";
-    cout << "=================================\n";
+
     while (i <= totalRecord)
     {
-        cout << record[i].id << " " << record[i].firstName << " " << record[i].lastName << " " << record[i].address << " " << record[i].tel << " " << record[i].course<<endl;
+        cout << "\t\t\t\t  "  <<record[i].id << "\t" << record[i].firstName << "\t " << record[i].lastName << "\t\t" << record[i].address << "\t " << record[i].tel << " " << record[i].course<<endl;
+
+
         i++;
     }
-    cout << "\n=================================\n";
-    cout << "End of Record\n";
+    cout << "\t\t\t\t    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+    cout << "\t\t\t\t\t\tEnd of Record NOTHING FOLLOWS\n";
 
     getch();
     enroll_menu();

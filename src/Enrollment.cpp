@@ -1,7 +1,7 @@
 #include <iostream>
 #include <conio.h>
 #include "string.h"
-
+#include <windows.h>
 #include "Enrollment.h"
 #include "Model.h"
 #include "Controller.h"
@@ -84,7 +84,7 @@ int findStudent()
     cout << "=================================\n";
 
     cout << "Enter student id: ";
-    scanf("%d", &id);
+    cin>>id;
 
     while (i <= totalRecord)
     {
@@ -118,7 +118,7 @@ int showAllRecord()
     cout << "=================================\n";
     while (i <= totalRecord)
     {
-        cout << record[i].id << " " << record[i].firstName << " " << record[i].lastName << " " << record[i].address << " " << record[i].tel << " " << record[i].course;
+        cout << record[i].id << " " << record[i].firstName << " " << record[i].lastName << " " << record[i].address << " " << record[i].tel << " " << record[i].course<<endl;
         i++;
     }
     cout << "\n=================================\n";
@@ -129,8 +129,3 @@ int showAllRecord()
     return 0;
 }
 
-int locateStudent(int id)
-// * Find student index and return it
-{
-    return 1;
-}

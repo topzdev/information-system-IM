@@ -1,9 +1,13 @@
 #include <iostream>
+#include <windows.h>
+
+// Context
 #include "Enlistment.h"
 #include "Model.h"
 #include "Controller.h"
 #include "Config.h"
 #include "Views.h"
+#include "Utils.h"
 #include "Enrollment.h"
 
 using namespace std;
@@ -49,7 +53,7 @@ void enlist_menu()
 
 void inputSubject()
 {
-    int stop = 1;
+    int stop = 1, studentNo;
     totalEnlist++;
     SUBJECT input[MAX_SUB];
     ENLIST student;
@@ -60,12 +64,20 @@ void inputSubject()
     cout << "-------------------------------------\n";
 
     cout << "Enter student Student no: ";
-    cin >> student.studentNumber;
+    cin >> studentNo;
 
-    cout << "Enter the student's subjects %d \n", sub_count;
+    // if the student not found this function will not execute
+    if (locateStudent(studentNo) == -1)
+    {
+        cout << "Student not found try again later" << endl;
+        pressAnyKey();
+        enlist_menu();
+        return;
+    }
 
     while (1)
     {
+        cout << "Subject no# " << (sub_count + 1) << endl;
         cout << "Enter Subject Code: ";
         cin >> input[sub_count].subjectCode;
 
@@ -88,63 +100,70 @@ void inputSubject()
 
         sub_count++;
     }
-
+    student.studentNumber = studentNo;
     student.subCount = sub_count;
     insertEnlist(student, input);
 }
 
 void insertEnlist(ENLIST student, SUBJECT *input)
 {
-    int i;
+    totalEnlist;
     enlist[totalEnlist].subCount = student.subCount;
-    *enlist[totalEnlist].subject = *input;
+    enlist[totalEnlist].studentNumber = student.studentNumber;
 
-    /*for(i = 0; i < student.subCount; i++){
-        strcpy(L[count].subject[i].studentNumber, input.studentNumber);
-        strcpy(L[count].subjectCode, input.subjectCode);
-        strcpy(L[count].venue, input.venue);
-        strcpy(L[count].time, input.time);
-        strcpy(L[count].subjectDescription, input.subjectDescription);
+    // *enlist[totalEnlist].subject = *input;
 
-    }*/
+    for (int i = 0; i <= student.subCount; i++)
+    {
+        strcpy(enlist[totalEnlist].subject[i].subjectCode, input[i].subjectCode);
+        strcpy(enlist[totalEnlist].subject[i].venue, input[i].venue);
+        strcpy(enlist[totalEnlist].subject[i].time, input[i].time);
+        strcpy(enlist[totalEnlist].subject[i].subjectDescription, input[i].subjectDescription);
+    }
 
     saveFileEnlist();
-    printf("Successfully Added");
+    cout << "Successfully Added";
     pressAnyKey();
+    enlist_menu();
 }
 
 void printCOR()
 {
-    int search;
+    int search, studentNo, recordIndex;
 
-    printf("Enter student number ID: ");
-    scanf("%s", &search);
+    cout << "Enter student Student no: ";
+    cin >> studentNo;
 
-    int indx = locateStudent(search);
-
-    if (indx == -1)
+    // if the student not found this function will not execute
+    recordIndex = locateStudent(studentNo);
+    if (recordIndex == -1)
     {
-        printf("Student not found...");
+        cout << "Student not found try again later" << endl;
+        pressAnyKey();
+        enlist_menu();
         return;
     }
 
-    printf("The student number is: %d", enlist[indx].studentNumber);
+    cout << "The student number is: TUPM-0" << enlist[recordIndex].studentNumber;
+    cout << "--------------------------------------------------------" << endl;
+    cout << "Last Name: " << record[recordIndex].firstName << "" << endl;
 }
 
 void displaySubjects()
 {
-    int i = 0, e;
-    printf("Subject Code | Venue | Time | Subject Description\n");
-    for (i = 0; i <= totalEnlist; i++)
+    int i, e;
+    cout << "Subject Code | Venue | Time | Subject Description" << endl;
+    for (i = 1; i <= totalEnlist; i++)
     {
-        printf("%s %d\n", enlist[i].studentNumber, enlist[i].subCount);
+        cout << enlist[i].studentNumber << " " << enlist[i].subCount << endl;
 
         for (e = 0; e <= enlist[i].subCount; e++)
         {
-            printf("%s %s %s %s\n", enlist[i].subject[e].subjectCode, enlist[i].subject[e].venue, enlist[i].subject[e].time, enlist[i].subject[e].subjectDescription);
+            cout << enlist[i].subject[e].subjectCode << " " << enlist[i].subject[e].venue << " " << enlist[i].subject[e].time << " " << enlist[i].subject[e].subjectDescription << endl;
         }
     }
 
-    printf("\nEnd of results");
+    cout << "\nEnd of results" << endl;
     pressAnyKey();
+    enlist_menu();
 }

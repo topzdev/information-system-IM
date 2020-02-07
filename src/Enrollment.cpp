@@ -5,6 +5,7 @@
 #include "Enrollment.h"
 #include "Model.h"
 #include "Controller.h"
+#include "main.h"
 
 using namespace std;
 
@@ -12,7 +13,6 @@ int enroll_menu()
 {
     int choosen;
     system("cls");
-    cout << "\xDB";
     cout << "\t\t\t\t  =================================================\n";
     cout << "\t\t\t\t  ||  \t\t                \t\t ||\n";
     cout << "\t\t\t\t  ||  \t\t  ENROLLMENT FORM \t\t ||\n";
@@ -24,6 +24,8 @@ int enroll_menu()
     cout << "\t\t\t\t\t\t[2] Search Student Record\n";
     cout << "\t\t\t\t  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
     cout << "\t\t\t\t\t\t[3] Show All Student Record\n";
+    cout << "\t\t\t\t  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+    cout << "\t\t\t\t\t\t[4] Return to Main Menu\n";
     cout << "\t\t\t\t  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
     cout << "\t\t\t\t\t\tEnter your choosen number: ";
     cin >> choosen;
@@ -60,7 +62,14 @@ int enroll_menu()
         cout << "\t\t\t\t    =================================================\n";
         showAllRecord();
         break;
+
+    case 4:
+        cout << "Press Any Key to continue...";
+        getch();
+        main_menu();
+        break;
     }
+
 
     return 0;
 }

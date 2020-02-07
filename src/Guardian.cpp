@@ -1,6 +1,7 @@
 #include "Guardian.h"
 #include <iostream>
 #include <string.h>
+#include <conio.h>
 // Context
 #include "Enlistment.h"
 #include "Model.h"
@@ -9,6 +10,7 @@
 #include "Views.h"
 #include "Utils.h"
 #include "Enrollment.h"
+#include "main.h"
 
 using namespace std;
 
@@ -16,29 +18,44 @@ void guardian_menu()
 {
     system("cls");
     int choose;
-
-    cout << "Choose any options" << endl;
-    cout << "[1] Add Student's Guardian" << endl;
-    cout << "[2] Display Students Guardian" << endl;
-    cout << "[3] Exit" << endl;
-    cout << "Enter your choice: ";
+    cout << "\t\t\t\t  =================================================\n";
+    cout << "\t\t\t\t  ||  \t\t                \t\t ||\n";
+    cout << "\t\t\t\t  ||  \t\t   GUARDIAN PAGE \t\t ||\n";
+    cout << "\t\t\t\t  ||  \t\t                \t\t ||\n";
+    cout << "\t\t\t\t  =================================================\n";
+    cout << "\n\t\t\t\t  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n";
+    cout << "\t\t\t\t\t\tChoose any options" << endl;
+    cout << "\n\t\t\t\t  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+    cout << "\t\t\t\t\t\t[1] Add Student's Guardian" << endl;
+    cout << "\t\t\t\t  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+    cout << "\t\t\t\t\t\t[2] Display Students Guardian" << endl;
+    cout << "\t\t\t\t  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+    cout << "\t\t\t\t\t\t[3] Return to Main Menu" << endl;
+    cout << "\t\t\t\t  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+    cout << "\t\t\t\t\t\tEnter your choice: ";
     cin >> choose;
 
-    system("cls");
+    
     switch (choose)
     {
 
     case 1:
+        system("cls");
         inputGuardian();
         break;
 
     case 2:
+        system("cls");
         displayGuardians();
         break;
 
     case 3:
+
+        cout << "Press any key to continue...";
+        getch();
+        main_menu();
         break;
-        system(0);
+
     default:
         cout << "Your input is not in the options";
         pressAnyKey();
@@ -54,41 +71,47 @@ void inputGuardian()
     PARENT_CONTACT student;
 
     int guardianCount = 0;
-
-    cout << "GUARDIAN INFORMATION\n";
-    cout << "-------------------------------------\n";
-
-    cout << "Enter student Student no: ";
+    cout << "\t\t\t\t    =================================================\n";
+    cout << "\t\t\t\t    ||  \t\t            \t\t   ||\n";
+    cout << "\t\t\t\t    ||  \tFILL UP GUARDIAN INFORMATION \t   ||\n";
+    cout << "\t\t\t\t    ||  \t\t            \t\t   ||\n";
+    cout << "\t\t\t\t    =================================================\n";
+    cout << "\n\t\t\t\t    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+    cout << "\t\t\t\t\t\t  GUARDIAN INFORMATION\n";
+    cout << "\t\t\t\t    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+    cout << "\n\t\t\t\t\t\tEnter student Student no: ";
     cin >> studentNo;
 
     // if the student not found this function will not execute
     if (locateStudent(studentNo) == -1)
     {
-        cout << "Student not found try again later" << endl;
-        pressAnyKey();
+        errorMessage("Student not found try again later");
         guardian_menu();
         return;
     }
 
     while (1)
     {
-        cout << "Guardian no# " << (guardianCount + 1) << endl;
-        cout << "Enter Guardian First Name: ";
+        cout << "\t\t\t\t    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+        cout << "\t\t\t\t\t\t    Guardian no# " << (guardianCount + 1) << endl;
+        cout << "\t\t\t\t    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+        cout << "\t\t\t\t\tEnter Guardian First Name: ";
         cin >> input[guardianCount].firstName;
 
-        cout << "Enter Guardian Last Name: ";
+        cout << "\n\t\t\t\t\tEnter Guardian Last Name: ";
         cin >> input[guardianCount].lastName;
 
-        cout << "Enter Guardian Contact: ";
+        cout << "\n\t\t\t\t\tEnter Guardian Contact: ";
         cin >> input[guardianCount].contact;
 
-        cout << "Enter Guardian Relaitionship: ";
+        cout << "\n\t\t\t\t\tEnter Guardian Relaitionship: ";
         cin >> input[guardianCount].relationship;
 
-        cout << "Enter Guardian Occupation: ";
+        cout << "\n\t\t\t\t\tEnter Guardian Occupation: ";
         cin >> input[guardianCount].occupation;
 
-        cout << "Add more Guardian ? type [1] if YES and [0] if no: ";
+        cout << "\n\t\t\t\t    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n";
+        cout << "\t\t\t\t  Add more Guardian ? type [1] if YES and [0] if no: ";
         cin >> stop;
 
         if (stop != 1)
@@ -129,19 +152,25 @@ void insertGuardian(PARENT_CONTACT student, GUARDIAN *input)
 void displayGuardians()
 {
     int i, e;
-    cout << "First Name | Last Name | Contact | Relaitionship | Occupation" << endl;
+    cout << "\t\t\t\t    =================================================\n";
+    cout << "\t\t\t\t    ||  \t\t            \t\t   ||\n";
+    cout << "\t\t\t\t    ||  \tLIST OF GUARDIAN INFORMATION \t   ||\n";
+    cout << "\t\t\t\t    ||  \t\t            \t\t   ||\n";
+    cout << "\t\t\t\t    =================================================\n\n";
+    cout << "\t\t\t\t    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n";
+    cout << "\t\t\t\tFirst Name | Last Name | Contact | Relaitionship | Occupation" << endl;
     for (i = 1; i <= totalGuardian; i++)
     {
         cout << endl
-             << "Student Name: " << record[locateEnlist(guardian[i].studentNumber)].firstName << " " << record[locateEnlist(guardian[i].studentNumber)].lastName << " Student Number TUPM-" << guardian[i].studentNumber << endl;
+             << "\t\t\t\t\tStudent Name: " << record[locateEnlist(guardian[i].studentNumber)].firstName << " " << record[locateEnlist(guardian[i].studentNumber)].lastName << " Student Number TUPM-" << guardian[i].studentNumber << endl;
         for (e = 0; e <= guardian[i].guardianCount; e++)
         {
-            cout << guardian[i].guardians[e].firstName << " " << guardian[i].guardians[e].lastName << " " << guardian[i].guardians[e].contact << " " << guardian[i].guardians[e].relationship << " " << guardian[i].guardians[e].occupation << endl;
+            cout << "\t\t\t\t" <<guardian[i].guardians[e].firstName << "\t" << guardian[i].guardians[e].lastName << "\t" << guardian[i].guardians[e].contact << "\t    " << guardian[i].guardians[e].relationship << "\t\t" << guardian[i].guardians[e].occupation << endl;
         }
         cout << endl;
     }
-
-    cout << "\nEnd of results" << endl;
+    cout << "\t\t\t\t    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\n\n";
+    cout << "\n\t\t\t\t\t\tEnd of results NOTHING FOLLOWS" << endl;
     pressAnyKey();
     guardian_menu();
 }

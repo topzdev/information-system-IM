@@ -31,7 +31,6 @@ void retrieveFileRecord()
             i++;
         }
     }
-    getch();
     fclose(file);
 }
 

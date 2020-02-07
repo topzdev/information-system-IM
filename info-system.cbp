@@ -43,6 +43,7 @@
 		<Unit filename="include/Model.h" />
 		<Unit filename="include/Utils.h" />
 		<Unit filename="include/Views.h" />
+		<Unit filename="include/main.h" />
 		<Unit filename="main.cpp" />
 		<Unit filename="src/Config.cpp" />
 		<Unit filename="src/Controller.cpp" />

@@ -1,7 +1,5 @@
 2
-1 1
-Cresilinda Lugod 2559069 Mother Vendor
-Bioly Lugod 2559069 Father Vendor
-2 1
-errol boi 222 bakla tsupa
-harold babog 333 rotc sundalo
+1 0
+Johnny Dope 0999959897 Father Stunt
+2 0
+Daniel Siasol 098787855 Father Actor
